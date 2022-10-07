@@ -1,0 +1,61 @@
+.header {
+    display: flex;
+    position: sticky;
+    top: 0;
+    justify-content: space-evenly;
+    border-bottom: 0.1px solid lightgray;
+    background-color: white;
+    width: 100%;
+    z-index: 5;
+
+}
+
+.yunus {
+    height: 30px;
+    width: 30px;
+    border-radius: 50px;
+    margin: 3px;
+    display: flex;
+}
+
+.yunus:hover {
+    cursor: pointer;
+}
+
+.header-left {
+    display: flex;
+}
+
+.header-left>img {
+    object-fit: contain;
+    height: 30px;
+    margin-right: 10px;
+    margin-top: 5px;
+}
+
+.header-search {
+    padding: 10px;
+    margin-top: 5px;
+    margin-right: 3px;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    height: 10px;
+    color: gray;
+    background-color: #eef3f8;
+}
+
+.header-search>input {
+    outline: none;
+    border: none;
+    background: none;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+}
+
+.header-avatar {
+
+}
