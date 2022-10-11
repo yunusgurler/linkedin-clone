@@ -2,7 +2,8 @@
     background-color: white;
     padding: 15px;
     margin-bottom: 10px;
-    border-radius: 10px;
+    border-radius: 10px;    
+    
 }
 
 .post-header {
@@ -25,7 +26,9 @@
 }
 
 .post-info>h2 {
+    white-space: nowrap;
     font-size: 15px;
+    
 }
 
 .post-buttons {
@@ -35,7 +38,7 @@
 
 .post-button {
     display: flex;
-    margin: 10px;
+    margin: 30px;
 }
 
 .post-button:hover {
@@ -48,10 +51,18 @@
 
 .feed-postFollow {
     display: flex;
-    margin-left: 55%;
-}
+    position: absolute;
+    margin-left: 440px;
+    padding: 5px;
 
-.feed-postFollow>h1 {
+    
+}
+.feed-postFollow:hover {
+    cursor: pointer;
+    background-color: rgba(128, 128, 128, 0.201);
+    border-radius: 10px;
+}
+.h1 {
     font-size: 16px;
 }
 .post-avatar {

@@ -2,7 +2,6 @@ import { Avatar } from "@mui/material";
 
 import React from "react";
 import "./Sidebar.css";
-import yunus from "../src/pp.jpg";
 import { selectUser } from "./features/userSlice";
 import { useSelector } from "react-redux";
 

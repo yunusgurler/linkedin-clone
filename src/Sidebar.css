@@ -19,6 +19,8 @@
     border-top-right-radius: 10px;
     background-color: white;
     padding-bottom: 10px;
+    min-width: 200px;
+    max-width: 300px;
 }
 
 .sidebar-avatar {
@@ -41,7 +43,7 @@
 .sidebar-topImage {
     margin-bottom: -20px;
     width: 100%;
-    /* height: 60px; */
+    height: 56px;
 
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;

@@ -7,41 +7,41 @@ import { auth } from "./firebase";
 import Header from "./Header";
 import Login from "./Login";
 import Sidebar from "./Sidebar";
+import { BrowserRouter as Router, Route, Routes, RedirectFunction } from "react-router-dom";
+import Home from "./Home";
 
 function App() {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
-  
+
   useEffect(() => {
-    auth.onAuthStateChanged(userAuth => {
-      if( userAuth) {
-        dispatch(login({
-          email: userAuth.email,
-          uid: userAuth.uid,
-          displayName: userAuth.displayName,
-          photoURL: userAuth.photoURL,
-        }))
+    auth.onAuthStateChanged((userAuth) => {
+      if (userAuth) {
+        dispatch(
+          login({
+            email: userAuth.email,
+            uid: userAuth.uid,
+            displayName: userAuth.displayName,
+            photoURL: userAuth.photoURL,
+          })
+        );
       } else {
-        dispatch(logout())
+        dispatch(logout());
       }
-    })
-  }, [])
+    });
+  }, []);
   return (
-    
-    <div className="app">
-        <Header />
-
-      {!user ? (
-        <Login />
-      ) : (
-
-      
-        <div className="app-body">
-          <Sidebar />
-          <Feed />
-        </div>
-      )}
-    </div>
+    <Router>
+      <Routes>
+        <Route element={<Login />} path=""></Route>
+        <Route element={<Home />} path="home"></Route>
+        {user ? (
+          <Route path="/home" element={<Home />} />
+        ) : (
+          <Route path="/login" element={<Login />} />
+        )}
+      </Routes>
+    </Router>
   );
 }
 
