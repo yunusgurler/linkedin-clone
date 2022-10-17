@@ -6,20 +6,8 @@
     border-bottom: 0.1px solid lightgray;
     background-color: white;
     width: 100%;
-    z-index: 5;
+    z-index: 4;
 
-}
-
-.yunus {
-    height: 30px;
-    width: 30px;
-    border-radius: 50px;
-    margin: 3px;
-    display: flex;
-}
-
-.yunus:hover {
-    cursor: pointer;
 }
 
 .header-left {
@@ -57,5 +45,41 @@
 }
 
 .header-avatar {
+    /* margin-bottom: -20px; */
+}
 
+.profile-button-container {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.logout-button {
+    border-radius: 3px;
+    border: 1px solid rgb(171, 171, 171);
+    height: 30px;
+    width: 100px;
+    z-index: 4;
+    background-color: whitesmoke;
+}
+
+.logout-button:hover {
+    background-color: rgb(205, 205, 205);
+
+}
+
+.avatar-button-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    margin-top: 6.5%;
+    margin-left: 6%;
+}
+
+@media only screen and (max-width: 812px) {
+    .header-avatar {
+        float: left;
+    }
 }

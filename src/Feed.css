@@ -2,54 +2,32 @@
     flex: 0.6;
     margin: 0 20px;
     margin-top: 20px;
-}
 
-.yunus{
-    height: 40px;
-    width: 44px;
-    border-radius: 50px;
-    margin: 3px;
-}
-
-.yunus-top {
-    height: 40px;
-    width: 45px;
-    border-radius: 50px;
-    margin-top: 10px;
-    margin-left: 3px;
-}
-
-.yunus-post {
-    height: 40px;
-    width: 40px;
-    border-radius: 50px;
-    margin: 3px;
 }
 
 .feed-inputContainer {
 
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     padding: 10px;
     padding-bottom: 3px;
     border-radius: 10px;
     margin-bottom: 20px;
-
 }
 
 .feed-avatar {
-    
     margin-top: 7px;
-    
+
 }
 
 .feed-input {
-
     color: gray;
     display: flex;
+
 
 }
 
 .feed-input>form {
+    display: flex;
     width: 100%;
     margin-left: 15px;
     border: 1px solid lightgray;
@@ -57,6 +35,8 @@
     padding-left: 5px;
     height: 50px;
     margin-bottom: 10px;
+    display: flex;
+    align-items: center;
 }
 
 .feed-input>form>input {
@@ -66,17 +46,30 @@
     margin-left: 10px;
     outline-width: 0;
     font-weight: 500;
-    padding-top: 3.5%;    
+
     width: 95%;
     border-top-left-radius: 10px;
     border-top-right-radius: 15px;
-    
+
 
 }
 
 .feed-input>form>button {
     display: none;
+    height: 100%;
+    margin-left: 50px;
+    border-radius: 100px;
+    border: 0px solid;
+    background-color: rgb(4, 91, 120);
+    color: white;
+    font-size: 12px;
 
+
+}
+
+.send-icon {
+    cursor: pointer;
+    margin-right: 20px;
 }
 
 .feed-postOptions {
@@ -87,30 +80,30 @@
 }
 
 .feed-postOptionIcon {
-
     display: flex;
     padding: 15px 7px 15px 7px;
-    
-    
+
+
 }
+
 .feed-postOptionIcon>p {
     font-size: 14px;
     margin-top: 2px;
     margin-left: 10px;
 }
-    
+
 .feed-postOptionIcon:hover {
     cursor: pointer;
     background-color: rgba(0, 0, 0, 0.057);
     border-radius: 3px;
-    
+
 }
 
 hr {
     width: 70%;
     height: 0px;
     margin-top: 9px;
-    
+
 }
 
 .feed-sort {
@@ -120,7 +113,7 @@ hr {
 
 .feed-sort>p {
     margin-left: 7px;
-    
+
     font-size: 12px;
     color: gray;
 }
@@ -149,8 +142,9 @@ hr {
     border-radius: 10px;
     margin-bottom: 20px;
 }
+
 .feed-postContainerTop {
-    
+
     margin-bottom: 10px;
     display: flex;
     align-items: center;
@@ -158,36 +152,51 @@ hr {
 
 .feed-postContainerBottom {
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     justify-content: center;
-    
+
 }
-.feed-postContainerBottom>p{
+
+.feed-postContainerBottom>p {
     margin-bottom: 10px;
     margin-left: 5px;
 
 
 }
+
 .feed-postContainerBottom>img {
     height: 200px;
     width: 250px;
     margin: 0 5px;
-    
+
 }
 
 
 .feed-postTitleContainer {
     font-size: 12px;
-    
+
     margin-left: 10px;
 }
 
 .feed-postFollow {
     display: flex;
     margin-left: 55%;
-    
+
 }
 
 .feed-postFollow>h1 {
     font-size: 16px;
+}
+
+@media only screen and (max-width: 812px) {
+    .feed {
+        width: 100%;
+    }
+}
+
+
+@media only screen and (min-width: 550px) {
+    .send-icon {
+        display: none;
+    }
 }

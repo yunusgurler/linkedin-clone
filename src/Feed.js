@@ -14,7 +14,7 @@ import { selectUser } from "./features/userSlice";
 import { useSelector } from "react-redux";
 import { Avatar } from "@mui/material";
 import FlipMove from 'react-flip-move';
-
+import SendIcon from '@mui/icons-material/Send';
 
 function Feed() {
   const [posts, setPosts] = useState([]);
@@ -48,7 +48,9 @@ function Feed() {
   };
 
   return (
+    
     <div className="feed">
+      
       {/* input and options */}
       <div className="feed-inputContainer">
         <div className="feed-input">
@@ -67,6 +69,8 @@ function Feed() {
               placeholder="Post something"
               type="text"
             ></input>
+            <SendIcon className="send-icon" onClick={sendPost}/>
+          
             <button onClick={sendPost} type="submit">
               Send
             </button>

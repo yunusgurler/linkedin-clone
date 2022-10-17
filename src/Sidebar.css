@@ -54,8 +54,9 @@
     margin-bottom: 10px;
     border: 1px solid lightgray;
     background-color: white;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    border-left: none;
+    border-right: none;
+    width: 90%;
 }
 .sidebar-stat {
     margin-top: 10px;
@@ -103,3 +104,9 @@
     background-color: whitesmoke;
     cursor: pointer;
 }
+
+@media only screen and (max-width: 812px) {
+    .sidebar {
+        display: none;
+    }
+  }

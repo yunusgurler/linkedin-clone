@@ -1,7 +1,5 @@
 .app-body {
     display: flex;
-    
-
 }
 
 .app {
@@ -10,4 +8,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-  } 
+
+   
+}
+
+@media only screen and (max-width: 812px) {
+    .app-body {
+        background-color: #f3f2ef;
+        
+    }
+  }

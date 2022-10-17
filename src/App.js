@@ -7,12 +7,21 @@ import { auth } from "./firebase";
 import Header from "./Header";
 import Login from "./Login";
 import Sidebar from "./Sidebar";
-import { BrowserRouter as Router, Route, Routes, RedirectFunction } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+  useNavigate,
+} from "react-router-dom";
 import Home from "./Home";
+import Profile from "./Profile";
 
 function App() {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
+
+  // const navigate = useNavigate();
 
   useEffect(() => {
     auth.onAuthStateChanged((userAuth) => {
@@ -25,6 +34,7 @@ function App() {
             photoURL: userAuth.photoURL,
           })
         );
+        // navigate("/home");
       } else {
         dispatch(logout());
       }
@@ -33,13 +43,15 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route element={<Login />} path=""></Route>
+
+        {!user ?
+                <Route element={<Login />} path=""></Route>
+                :
+                <Route element={<Home />} path=""></Route>
+              }
+        <Route element={<Login />} path="/login"/>
         <Route element={<Home />} path="home"></Route>
-        {user ? (
-          <Route path="/home" element={<Home />} />
-        ) : (
-          <Route path="/login" element={<Login />} />
-        )}
+        <Route element={<Profile />} path="profile"></Route>
       </Routes>
     </Router>
   );
