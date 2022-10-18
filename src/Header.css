@@ -45,7 +45,7 @@
 }
 
 .header-avatar {
-    /* margin-bottom: -20px; */
+    cursor: pointer;
 }
 
 .profile-button-container {
