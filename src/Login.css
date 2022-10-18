@@ -1,13 +1,15 @@
 .login {
     width: 100%;
-    margin-bottom: 320px;
-
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
-
-.login>img {
+.img-container{
+    display: flex;
+    justify-content: center;
+}
+.img-container>img {
     height: 100px;
-    width: 170px;
-    margin-left: 20%;
 }
 
 .login-body {
@@ -17,13 +19,12 @@
     border-radius: 10px;
 }
 
-.login>h1 {
+.login-body>h1 {
     margin-bottom: 20px;
 
     font-weight: 400;
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: center;
+    text-align: center;
+    white-space: pre-line;
 }
 
 .login-topContainer {
@@ -152,14 +153,17 @@
     margin-top: 10px;
     cursor: pointer;
     color: #0072b1;
-
-    margin-left: 150px;
-    margin-right: 150px;
 }
 
 
-.login>p {
+.login-body>p {
     display: flex;
     justify-content: center;
     margin: 10px;
+    text-align: center;
+}
+@media only screen and (max-width: 560px) {
+
+   
+
 }

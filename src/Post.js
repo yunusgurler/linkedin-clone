@@ -9,6 +9,7 @@ import React, { forwardRef, useState } from "react";
 import "./Post.css";
 import { selectUser } from "./features/userSlice";
 import { useSelector } from "react-redux";
+
 const Post = forwardRef(
   ({ name, description, message, photoUrl, timestamp }, ref) => {
     let time;

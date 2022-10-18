@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { forwardRef, useState } from "react";
 import "./Header.css";
 import HeaderOption from "./HeaderOption";
 import SearchIcon from "@mui/icons-material/Search";
 import HomeIcon from "@mui/icons-material/Home";
 import SupervisorAccountIcon from "@mui/icons-material/SupervisorAccount";
+import FlipMove from "react-flip-move";
 
 import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
 import ChatIcon from "@mui/icons-material/Chat";
@@ -15,28 +16,26 @@ import { Avatar } from "@mui/material";
 import { Navigate, useNavigate } from "react-router-dom";
 import { ButtonGroup, Dropdown, DropdownButton } from "react-bootstrap";
 
-function Header() {
+const Header = forwardRef((props, ref) => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
   const [logoutButtonVisible, setLogoutButtonVisible] = useState(false);
-  const options = ["Profile", "Logout"]
+  const options = ["Profile", "Logout"];
   const navigate = useNavigate();
 
   const handleLogout = () => {
     dispatch(logout());
     auth.signOut();
-    navigate('/login');
+    navigate("/login");
   };
 
-  
   const navigateHome = () => {
-    navigate('/home');
-  }
-  
-  const onProfileTap = () => {
-    setLogoutButtonVisible(!logoutButtonVisible)
-  }
+    navigate("/home");
+  };
 
+  const onProfileTap = () => {
+    setLogoutButtonVisible(!logoutButtonVisible);
+  };
 
   return (
     <div className="header">
@@ -75,25 +74,30 @@ function Header() {
             </Avatar>
           )}
           {logoutButtonVisible ? (
-            <div className="avatar-button-container">
-              <button
-                className="logout-button"
-                style={{ cursor: "pointer" }}
-                onClick={() => navigate("/profile")}
-              >
-                Profile
-              </button>
-              <button
-                className="logout-button"
-                style={{ cursor: "pointer" }}
-                onClick={handleLogout}
-              >
-                Logout
-              </button>
-            </div>
+            <FlipMove>
+              <div className="avatar-button-container">
+                <button
+                  ref={ref}
+                  className="logout-button"
+                  style={{ cursor: "pointer" }}
+                  onClick={() => navigate("/profile")}
+                >
+                  Profile
+                </button>
+                <button
+                  ref={ref}
+                  className="logout-button"
+                  style={{ cursor: "pointer" }}
+                  onClick={handleLogout}
+                >
+                  Logout
+                </button>
+              </div>
+            </FlipMove>
           ) : (
             <div className="avatar-button-container">
               <button
+                ref={ref}
                 className="logout-button"
                 style={{ visibility: "hidden" }}
                 onClick={handleLogout}
@@ -101,6 +105,7 @@ function Header() {
                 Profile
               </button>
               <button
+                ref={ref}
                 className="logout-button"
                 style={{ visibility: "hidden" }}
                 onClick={handleLogout}
@@ -113,6 +118,6 @@ function Header() {
       </div>
     </div>
   );
-}
+});
 
 export default Header;

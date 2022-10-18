@@ -191,6 +191,7 @@ hr {
 @media only screen and (max-width: 812px) {
     .feed {
         width: 100%;
+        
     }
 }
 
@@ -199,4 +200,8 @@ hr {
     .send-icon {
         display: none;
     }
+}
+
+@media only screen and (max-width: 812px) {
+
 }

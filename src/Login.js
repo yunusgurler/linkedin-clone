@@ -61,13 +61,15 @@ function Login() {
 
   return (
     <div className="login">
+      <div className="img-container">
       <img
         src="https://blog.waalaxy.com/wp-content/uploads/2021/01/Linkedin-Logo-2048x1280.png"
         alt=""
       />
+      </div>
+      <div className="login-body">
       <h1>Make the most of your professional life</h1>
 
-      <div className="login-body">
         <div className="login-topContainer">
           <div className="login-formContainer">
             <form>
@@ -112,9 +114,10 @@ function Login() {
 
         <h3>Already on LinkedIn?</h3>
         <p onClick={register}>Sign up</p>
+      <p>Looking to create a page for a business? Get help</p>
+
       </div>
 
-      <p>Looking to create a page for a business? Get help</p>
     </div>
   );
 }
