@@ -5,8 +5,6 @@ import SmartDisplayIcon from "@mui/icons-material/SmartDisplay";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import NotesIcon from "@mui/icons-material/Notes";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import AddIcon from "@mui/icons-material/Add";
-import yunus from "../src/pp.jpg";
 import Post from "./Post";
 import { db } from "./firebase";
 import firebase from "firebase/compat/app";
@@ -19,9 +17,15 @@ import SendIcon from "@mui/icons-material/Send";
 function Feed() {
   const [posts, setPosts] = useState([]);
   const [input, setInput] = useState("");
-
+  const [postImages, setPostImages] = useState([]);
+  const [postImageUrls, setPostImageUrls] = useState([]);
+  
   const user = useSelector(selectUser);
 
+  // const onImageChange = (e) => {
+  //   setPostImages([...e.target.files])
+
+  // }
   useEffect(() => {
     db.collection("posts")
       .orderBy("timestamp", "desc")
@@ -33,10 +37,21 @@ function Feed() {
           }))
         )
       );
-  }, []);
+
+      if(postImages.length < 1) return;
+      const newImageUrls = [];
+      postImages.forEach(image => newImageUrls.push(URL.createObjectURL(image)));
+      setPostImageUrls(newImageUrls);
+
+    // console.log(postImages);
+    console.log(postImageUrls);
+
+  }, [postImages]);
+
+
+
   const sendPost = (e) => {
     e.preventDefault();
-    console.log(firebase.firestore.FieldValue.serverTimestamp());
 
     if (input) {
       db.collection("posts").add({
@@ -45,6 +60,8 @@ function Feed() {
         message: input,
         photoUrl: user?.photoURL,
         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+        postImageUrls: postImageUrls
+
       });
     } else {
       alert("Input can't be empty")
@@ -52,6 +69,8 @@ function Feed() {
 
     setInput("");
   };
+
+  
 
   return (
     <div className="feed">
@@ -85,7 +104,10 @@ function Feed() {
         <div className="feed-postOptions">
           <div className="feed-postOptionIcon">
             <PanoramaIcon style={{ color: "#0dc2ff" }} />
+            <div className="send-photo">
             <p>Photo</p>
+            {/* <input type="file" multiple accept="image/*" onChange={onImageChange} /> */}
+            </div>
           </div>
 
           <div className="feed-postOptionIcon">
@@ -117,7 +139,7 @@ function Feed() {
         {posts.map(
           ({
             id,
-            data: { name, description, message, photoUrl, timestamp },
+            data: { name, description, message, photoUrl, timestamp, /*postImageUrls*/ postImages },
           }) => (
             <Post
               key={id}
@@ -126,6 +148,8 @@ function Feed() {
               message={message}
               photoUrl={photoUrl}
               timestamp={timestamp}
+              // postImageUrls={postImageUrls}
+              postImages={postImages}
             />
           )
         )}
