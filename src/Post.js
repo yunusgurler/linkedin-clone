@@ -11,21 +11,17 @@ import { selectUser } from "./features/userSlice";
 import { useSelector } from "react-redux";
 
 const Post = forwardRef(
-  ({ name, description, message, photoUrl, timestamp }, ref) => {
+  ({ name, description, message, photoUrl, timestamp, /*postImageUrls*/ postImages }, ref) => {
     let time;
-    const user = useSelector(selectUser);
     const [followed, setFollowed] = useState(false);
-    let followString = "Follow";
+    console.log(postImages);
 
     const onFollow = () => {
       setFollowed(!followed);
-      console.log(followString);
     };
 
     const onUnfollow = () => {
       setFollowed(!followed);
-      console.log(followString);
-      
     };
 
     if (timestamp?.seconds) {
@@ -33,6 +29,9 @@ const Post = forwardRef(
         timestamp?.seconds * 1000 + timestamp?.nanoseconds / 1000000
       );
     }
+
+    
+
 
     return (
       <div ref={ref} className="post">
@@ -46,26 +45,62 @@ const Post = forwardRef(
             <p>{time?.toDateString()}</p>
           </div>
 
-            {!followed ? (
-              <div className="feed-postFollow">
-                <AddIcon style={{ color: "#0a66c2" }} />
-                <h1 className="h1" onClick={onFollow} style={{ color: "#0a66c2" }}>
-                  Follow
-                </h1>
-              </div>
-            ) : (
-              <div className="feed-postFollow">
-                <DoneIcon style={{ color: "#0a66c2" }} />
-                <h1 className="h1" onClick={onUnfollow} style={{ color: "#0a66c2" }}>
-                  Unfollow
-                </h1>
-              </div>
-            )}
+          {!followed ? (
+            <div className="feed-postFollow">
+              <AddIcon style={{ color: "#0a66c2" }} />
+              <h1
+                className="h1"
+                onClick={onFollow}
+                style={{ color: "#0a66c2" }}
+              >
+                Follow
+              </h1>
+            </div>
+          ) : (
+            <div className="feed-postFollow">
+              <DoneIcon style={{ color: "#0a66c2" }} />
+              <h1
+                className="h1"
+                onClick={onUnfollow}
+                style={{ color: "#0a66c2" }}
+              >
+                Unfollow
+              </h1>
+            </div>
+          )}
 
-            {/* {followed? :} */}
+          {/* {followed? :} */}
         </div>
         <div className="post-body">
           <p>{message}</p>
+
+          {/* {postImageUrls !== undefined &&
+            //  <img src={postImageUrls} alt=""/>
+
+            postImageUrls.map(function (postImageUrl) {
+              return(     
+              <div className="post-image-container">
+                <img src={postImageUrl} alt="" />
+              </div>);
+            })} */}
+
+          {postImages !== undefined &&
+            //  <img src={postImageUrls} alt=""/>
+
+
+            
+            postImages.map(function (postImage) {
+
+              
+
+
+              
+              return (
+                <div className="post-image-container">
+                  <img src={postImage} alt="" />
+                </div>
+              );
+            })}
         </div>
 
         <div className="post-buttons">
