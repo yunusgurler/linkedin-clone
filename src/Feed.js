@@ -62,6 +62,7 @@ function Feed() {
         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
         postImageUrls: postImageUrls
 
+
       });
     } else {
       alert("Input can't be empty")
@@ -139,7 +140,9 @@ function Feed() {
         {posts.map(
           ({
             id,
+
             data: { name, description, message, photoUrl, timestamp, /*postImageUrls*/ postImages },
+
           }) => (
             <Post
               key={id}
@@ -148,8 +151,8 @@ function Feed() {
               message={message}
               photoUrl={photoUrl}
               timestamp={timestamp}
-              // postImageUrls={postImageUrls}
               postImages={postImages}
+
             />
           )
         )}
